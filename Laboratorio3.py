@@ -40,7 +40,11 @@ print("df1------------------------------------")
 frequent_itemsets = frequent_patterns.apriori(df1, min_support=0.6, use_colnames=True)
 print(frequent_itemsets)
 
-print("df2------------------------------------")
-frequent_itemsets = frequent_patterns.apriori(df2, min_support=0.6, use_colnames=True)
-print(frequent_itemsets)
-print("Fin del programa")
+#Al habilitar esta parte se puede ver la relacion entre los productos vendidos en el df2
+#Afecta el rendimiento del programa al habilitar el codigo-----------------------------------------------
+
+
+##print("df2------------------------------------")
+##frequent_itemsets = frequent_patterns.apriori(df2, min_support=0.6, use_colnames=True)
+##print(frequent_itemsets)
+##print("Fin del programa")
