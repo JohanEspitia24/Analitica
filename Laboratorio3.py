@@ -19,23 +19,25 @@ df1 = pd.DataFrame(iter(table1))
 df2 = pd.DataFrame(iter(table2))
 
 # Mostrar las primeras 5 filas
-print(df1.head())
-print(df2.head())
+print(df1.head(20))
+print(df2.head(20))
 
 # Mostrar las columnas
 print(df1.columns)
 print(df2.columns)
 
-#Usando mlxtend encontramos la relacion entre los productos vendidos
-#y la cantidad de veces que se vendieron juntos
-# Convert the DataFrame to a transaction list
-transactions = df1.values.tolist()
+#Convertirmos los datos a booleanos
+df1 = df1.astype(bool)
+df2 = df2.astype(bool)
 
-# Apply one-hot encoding to the transaction list
-one_hot_encoded = frequent_patterns.transactionlist_to_dataframe(transactions, colnames=df1.columns)
+# Mostrar las primeras 5 filas
+print(df1.head(20))
+print(df2.head(20))
 
-# Find frequent itemsets using the Apriori algorithm
-frequent_itemsets = frequent_patterns.apriori(one_hot_encoded, min_support=0.1, use_colnames=True)
+#Usando mlxtend encontramos la relacion entre los productos vendidos entre los df1 y df2
+print("Relacion entre los productos vendidos entre los df1 y df2")
+frequent_itemsets = frequent_patterns.apriori(df1, min_support=0.6, use_colnames=True)
+print(frequent_itemsets)
 
-# Print the frequent itemsets
+frequent_itemsets = frequent_patterns.apriori(df2, min_support=0.6, use_colnames=True)
 print(frequent_itemsets)
